@@ -1,0 +1,8 @@
+:root {
+  --offset: 6px;
+}
+
+body {
+  height: 100vw;
+  background-color: rgb(129, 96, 96);
+}
