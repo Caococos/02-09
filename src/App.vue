@@ -4,7 +4,7 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-11 21:03:51
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-11 21:30:25
+ * @LastEditTime: 2021-06-12 19:19:08
 -->
 <template>
   <div id="app">
@@ -13,4 +13,10 @@
 </template>
 
 <style>
+@import "~assets/font/iconfont.css";
+body {
+  background-image: url("~assets/img/bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 </style>
