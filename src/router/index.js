@@ -4,7 +4,7 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-11 21:03:51
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-11 21:34:08
+ * @LastEditTime: 2021-06-14 20:57:59
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -15,10 +15,10 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '',
-    redirect: '/home'
+    redirect: '/IsLulu'
   },
   {
-    path: '/home',
+    path: '/IsLulu',
     name: 'Home',
     component: Home
   },

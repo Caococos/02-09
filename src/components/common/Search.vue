@@ -4,12 +4,12 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-12 16:37:33
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-12 22:25:39
+ * @LastEditTime: 2021-06-13 08:08:35
 -->
 <template>
   <div class='search'>
     <input type="text" class="text" v-model="search" @keyup.enter="searchContent">
-    <div class="btn iconfont icon-icon-test"></div>
+    <div class="btn iconfont icon-icon-test" @click="searchContent"></div>
   </div>
 </template>
 
@@ -35,8 +35,6 @@ export default {
 
 <style scoped>
 .search {
-  position: absolute;
-  margin: 30px 0 0 20px;
   padding: 5px;
   display: flex;
   justify-content: center;

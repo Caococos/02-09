@@ -4,7 +4,7 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-11 22:34:44
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-12 13:34:48
+ * @LastEditTime: 2021-06-14 23:07:22
 -->
 <template>
   <div class="font-swiper">
@@ -30,7 +30,7 @@ export default {
     move() {
       setInterval(function () {
         const show = document.querySelector('span[data-show]')
-        const next = show.nextElementSibling || document.querySelector('span:first-child') //拿到正在show的下一个span或者第一个span
+        const next = show.nextElementSibling || document.querySelector('.mask span:first-child') //拿到正在show的下一个span或者第一个span
         const up = document.querySelector('span[data-up]')
 
         if (up) {

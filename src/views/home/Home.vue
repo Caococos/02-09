@@ -4,28 +4,36 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-11 21:03:51
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-12 22:27:18
+ * @LastEditTime: 2021-06-15 17:09:54
 -->
 <template>
   <div class='home'>
+    <s-animation></s-animation>
     <font-swiper></font-swiper>
     <div class="right">
       <logo class="logo"></logo>
       <note class='note'></note>
     </div>
     <sunshine></sunshine>
-    <search></search>
+    <search class="search"></search>
     <clock class="clock"></clock>
+    <colorful-ball></colorful-ball>
+    <music-control></music-control>
   </div>
 </template>
 
 <script>
 import FontSwiper from 'views/home/childComps/FontSwiper';
+import ColorfulBall from 'components/common/ColorfulBall';
 import Sunshine from 'views/home/childComps/Sunshine';
 import Search from 'components/common/Search';
 import Clock from 'components/common/Clock';
 import Logo from 'views/home/childComps/Logo';
 import Note from 'views/home/childComps/Note';
+import SAnimation from 'views/home/childComps/SAnimation';
+import MusicControl from 'components/common/MusicControl';
+
+
 
 export default {
   name: 'home',
@@ -35,6 +43,9 @@ export default {
     }
   },
   components: {
+    MusicControl,
+    ColorfulBall,
+    SAnimation,
     FontSwiper,
     Sunshine,
     Search,
@@ -58,6 +69,11 @@ export default {
   position: relative;
   top: -10px;
   left: 220px;
+}
+
+.search {
+  position: absolute;
+  margin: 30px 0 0 20px;
 }
 
 .note {

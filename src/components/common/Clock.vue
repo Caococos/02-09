@@ -4,7 +4,7 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-12 19:57:53
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-12 22:24:34
+ * @LastEditTime: 2021-06-12 22:29:39
 -->
 <template>
   <div class='clock'>
@@ -59,5 +59,9 @@ export default {
   text-align: center;
   font-size: 50px;
   color: #a29bfe;
+}
+
+.time {
+  font-size: 60px;
 }
 </style>
