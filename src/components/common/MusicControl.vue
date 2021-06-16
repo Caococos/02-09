@@ -4,7 +4,7 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-15 16:58:51
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-15 17:30:32
+ * @LastEditTime: 2021-06-16 10:09:44
 -->
 <template>
   <div class='music-control'>
@@ -23,10 +23,10 @@
       </div>
     </div>
     <div class="music__btn">
-      <i class="el-icon-refresh" @click="switchMusic">play</i>
+      <i class="iconfont icon-shuaxin" @click="switchMusic"></i>
     </div>
     <div class="music__mask"></div>
-    <audio ref="music" :src="audioSrc"></audio>
+    <audio ref="music" :src="audioSrc" autoplay="autoplay"></audio>
   </div>
 </template>
 
@@ -35,7 +35,10 @@ export default {
   name: 'music-control',
   data() {
     this.audioSrcs = [
-      '@/assets/music/Kilala.mp3'
+      'http://music.163.com/song/media/outer/url?id=541499338.mp3',
+      'http://music.163.com/song/media/outer/url?id=461332283.mp3',
+      'http://music.163.com/song/media/outer/url?id=29758203.mp3',
+      'http://music.163.com/song/media/outer/url?id=30251317.mp3'
     ];
     return {
       isPlay: false,
@@ -44,7 +47,6 @@ export default {
       audioSrc: this.audioSrcs[0]
     };
   },
-  created() { },
   mounted() {
     this.watchMusicTime();
   },
@@ -95,7 +97,7 @@ export default {
     // 切换歌曲
     switchMusic() {
       this.isPlay = false;
-      this.audioSrc = this.audioSrcs[Math.floor(Math.random() * 5)];
+      this.audioSrc = this.audioSrcs[Math.floor(Math.random() * this.audioSrcs.length)];
       this.music.load()
       // 文件下载完毕，如果不用等到全部下载完毕，可以用canplay事件
       this.music.addEventListener("canplaythrough", () => {
@@ -153,7 +155,6 @@ export default {
 }
 .music-control {
   width: 500px;
-  margin: 0 auto;
   border-radius: 15px;
   position: relative;
   padding: 30px;
@@ -181,7 +182,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.music__timeBar {
+.music__main__timeBar {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -207,7 +208,7 @@ export default {
   overflow: hidden;
   cursor: pointer;
 }
-.music__slid {
+.bar__slid {
   position: absolute;
   left: 0;
   top: 0;
@@ -221,7 +222,7 @@ export default {
   right: 30px;
   top: 10px;
 }
-.music i {
+.music__btn i {
   font-size: 18px;
   color: #fff;
   cursor: pointer;
@@ -232,7 +233,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
-  filter: blur(15px);
+  filter: blur(5px);
   opacity: 0.5;
   transition: all 0.8s;
   position: absolute;
@@ -241,7 +242,7 @@ export default {
   left: 0;
   bottom: 0;
 }
-.music::before {
+.music-control::before {
   position: absolute;
   top: 0;
   right: 0;
