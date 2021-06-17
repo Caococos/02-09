@@ -4,7 +4,7 @@
  * @Author: Zhihaot1
  * @Date: 2021-06-15 16:58:51
  * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-16 10:09:44
+ * @LastEditTime: 2021-06-17 09:16:54
 -->
 <template>
   <div class='music-control'>
@@ -224,8 +224,11 @@ export default {
 }
 .music__btn i {
   font-size: 18px;
-  color: #fff;
+  color: #b2bec3;
   cursor: pointer;
+}
+.music__btn i:hover {
+  color: #fff;
 }
 .music__mask {
   background-image: url("~assets/img/music.jpg");
