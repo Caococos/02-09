@@ -35,8 +35,8 @@ export default {
   name: 'music-control',
   data() {
     this.audioSrcs = [
+      'http://music.163.com/song/media/outer/url?id=1840459406.mp3',
       'http://music.163.com/song/media/outer/url?id=541499338.mp3',
-      'http://music.163.com/song/media/outer/url?id=461332283.mp3',
       'http://music.163.com/song/media/outer/url?id=29758203.mp3',
       'http://music.163.com/song/media/outer/url?id=30251317.mp3'
     ];
