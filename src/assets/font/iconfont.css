@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2608876 */
-  src: url('iconfont.woff2?t=1623806536595') format('woff2'),
-       url('iconfont.woff?t=1623806536595') format('woff'),
-       url('iconfont.ttf?t=1623806536595') format('truetype');
+  src: url('iconfont.woff2?t=1626621199799') format('woff2'),
+       url('iconfont.woff?t=1626621199799') format('woff'),
+       url('iconfont.ttf?t=1626621199799') format('truetype');
 }
 
 .iconfont {
@@ -13,15 +13,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-icon_MyMusicBook:before {
+  content: "\e6bb";
+}
+
 .icon-shuaxin:before {
   content: "\e782";
 }
 
 .icon-icon-test:before {
   content: "\e63c";
-}
-
-.icon-icon-test-copy:before {
-  content: "\e63d";
 }
 

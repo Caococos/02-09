@@ -12,12 +12,7 @@
 
 <script>
 export default {
-  name: 'sunshine',
-  data() {
-    return {
-
-    }
-  }
+  name: 'sunshine'
 }
 </script>
 

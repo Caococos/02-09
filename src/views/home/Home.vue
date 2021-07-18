@@ -9,16 +9,24 @@
 <template>
   <div class='home'>
     <s-animation></s-animation>
-    <font-swiper></font-swiper>
+    <font-swiper class="font-swiper"></font-swiper>
     <div class="right">
       <logo class="logo"></logo>
       <note class='note'></note>
     </div>
-    <sunshine></sunshine>
-    <search class="search"></search>
+    <sunshine class="sunshine"></sunshine>
+    <transition name="fade">
+      <search class="search" v-show="!isShow"></search>
+    </transition>
     <clock class="clock"></clock>
     <colorful-ball></colorful-ball>
-    <music-control class="music-control"></music-control>
+    <transition name="fade">
+      <music-control v-show="isShow" class="music-control"></music-control>
+    </transition>
+    <!-- 音乐显示控制 -->
+    <div :class="['music-show', {'music-high': isShow}]" @click="isShow = !isShow">
+      <i class="iconfont icon-icon_MyMusicBook"></i>
+    </div>
     <girl-ani class="girl-ani"></girl-ani>
     <footer-zhihaot1></footer-zhihaot1>
   </div>
@@ -43,7 +51,7 @@ export default {
   name: 'home',
   data() {
     return {
-
+      isShow: false
     }
   },
   components: {
@@ -63,18 +71,11 @@ export default {
 </script>
 
 <style scoped>
-.right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 40px 84px 0 10px;
-  width: 370px;
-}
-
-.logo {
+.home {
   position: relative;
-  top: -10px;
-  left: 220px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .search {
@@ -91,16 +92,87 @@ export default {
   bottom: 20px;
   right: 20px;
 }
-
-.music-control {
-  margin-left: 20px;
-  transform: translateY(150%);
+/* Web端 */
+@media only screen and (min-width: 1280px) {
+  .logo {
+    position: relative;
+    top: -10px;
+    left: 220px;
+  }
+  .girl-ani {
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    z-index: -10;
+  }
+  .music-control {
+    margin-left: 20px;
+    transform: translateY(150%);
+  }
+  .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 40px 84px 0 10px;
+    width: 370px;
+  }
 }
-
-.girl-ani {
-  position: absolute;
-  bottom: 0;
-  left: 35%;
-  z-index: -10;
+/* 移动端 */
+@media only screen and (max-width: 1280px) {
+  .sunshine {
+    display: none;
+  }
+  .music-show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 65%;
+    left: 0;
+    z-index: 10;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #0984e3;
+    border-radius: 50%;
+    color: #0984e3;
+    transition: all 0.5s;
+  }
+  .icon-icon_MyMusicBook {
+    font-size: 40px;
+  }
+  .girl-ani {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .font-swiper {
+    display: none;
+  }
+  .clock {
+    display: none;
+  }
+  .music-high {
+    border: none;
+    background-color: #0984e3;
+    color: #fff;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 1s;
+  }
 }
 </style>

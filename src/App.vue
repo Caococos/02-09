@@ -24,8 +24,17 @@ export default {
 
 <style>
 @import "~assets/font/iconfont.css";
+@media only screen and (max-width: 1280px) {
+  body {
+    background-image: url("~assets/img/bg4.jpg");
+  }
+}
+@media only screen and (min-width: 1280px) {
+  body {
+    background-image: url("~assets/img/bg1.jpg");
+  }
+}
 body {
-  background-image: url("~assets/img/bg1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;

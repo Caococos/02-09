@@ -30,9 +30,12 @@ export default {
 
 <style scoped>
 .footer {
+  display: flex;
+  justify-content: center;
   position: absolute;
   bottom: 10px;
   left: 50%;
+  width: 100%;
   transform: translateX(-50%);
   color: #b2bec3;
   font-size: 12px;

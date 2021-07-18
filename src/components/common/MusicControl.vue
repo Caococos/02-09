@@ -145,6 +145,11 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (min-width: 1280px) {
+  .music-control {
+    width: 500px;
+  }
+}
 @keyframes musicRotate {
   from {
     transform: rotate(0);
@@ -154,7 +159,6 @@ export default {
   }
 }
 .music-control {
-  width: 500px;
   border-radius: 15px;
   position: relative;
   padding: 30px;

@@ -7,7 +7,7 @@
  * @LastEditTime: 2021-06-14 18:43:03
 -->
 <template>
-  <canvas ref="canvas">如果浏览器兼容此标签置换元素内的内容会被替换掉，否则会被替换(在js中)</canvas>
+  <canvas class="cursorEvent" ref="canvas">如果浏览器兼容此标签置换元素内的内容会被替换掉，否则会被替换(在js中)</canvas>
 </template>
 
 <script>
@@ -59,10 +59,17 @@ export default {
 </script>
 
 <style scoped>
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+@media only screen and (max-width: 1280px) {
+  .cursorEvent {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .cursorEvent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
 </style>

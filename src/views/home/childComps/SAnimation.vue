@@ -69,65 +69,62 @@ export default {
 </script>
 
 <style scoped>
-.s-animation {
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  /* background-color: rgb(233, 191, 191); */
-  background-image: url(~assets/img/bg2.jpg);
-  color: #2c3e50;
-  background-size: cover;
-  overflow: hidden;
-}
+@media only screen and (min-width: 1280px) {
+  .s-animation {
+    /* background-color: rgb(233, 191, 191); */
+    background-image: url(~assets/img/bg2.jpg);
+    background-size: cover;
+    overflow: hidden;
+    color: #2c3e50;
+  }
 
-#h1 {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  font-size: 6rem;
-  padding: 0;
-  height: 109px;
-  /* white-space: nowrap; */
-  overflow: hidden;
-  font-family: "Simsun";
-}
+  #h1 {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    font-size: 6rem;
+    padding: 0;
+    height: 109px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: "Simsun";
+  }
 
-.one {
-  transform: translate(-50%, -100%);
-  margin-left: 100px;
-}
+  .one {
+    transform: translate(-50%, -100%);
+    margin-left: 100px;
+  }
 
-.two {
-  transform: translate(-50%, -50%);
-  margin-left: 150px;
-}
+  .two {
+    transform: translate(-50%, -50%);
+    margin-left: 150px;
+  }
 
-[data-h1]::after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  width: 10px;
-  height: 6rem;
-  background-color: #2c3e50;
-  border-radius: 2px;
-  top: 6px;
-}
+  [data-h1]::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 10px;
+    height: 6rem;
+    background-color: #2c3e50;
+    border-radius: 2px;
+    top: 6px;
+  }
 
-#h1 span {
-  /* 延迟预设值 */
-  --delay: 10s;
-  display: inline-block;
-  overflow: hidden;
-  width: 0;
-  animation: 0.1s text-in ease-in-out forwards;
-  animation-delay: var(--delay);
-}
+  #h1 span {
+    /* 延迟预设值 */
+    --delay: 10s;
+    display: inline-block;
+    overflow: hidden;
+    width: 0;
+    animation: 0.1s text-in ease-in-out forwards;
+    animation-delay: var(--delay);
+  }
 
-h1.ended::after {
-  animation: 1.1s cursor steps(2, jump-none) infinite;
+  h1.ended::after {
+    animation: 1.1s cursor steps(2, jump-none) infinite;
+  }
 }
-
 @keyframes text-in {
   from {
     width: 0;
@@ -152,6 +149,69 @@ h1.ended::after {
 
 .fade-leave-to {
   opacity: 0;
+}
+/* 移动端 */
+@media only screen and (max-width: 1280px) {
+  .s-animation {
+    /* position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    background-image: url(~assets/img/bg3.jpg);
+    color: #dff9fb;
+  }
+
+  #h1 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    overflow: hidden;
+    font-family: "Simsun";
+  }
+
+  .one {
+    top: 60%;
+  }
+
+  .two {
+    top: 70%;
+  }
+
+  [data-h1]::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 2px;
+    height: 36.8px;
+    background-color: #dff9fb;
+    border-radius: 2px;
+    /* top: 6px; */
+  }
+
+  #h1 span {
+    /* 延迟预设值 */
+    --delay: 10s;
+    display: inline-block;
+    overflow: hidden;
+    width: 0;
+    animation: 0.1s text-in ease-in-out forwards;
+    animation-delay: var(--delay);
+  }
+
+  h1.ended::after {
+    animation: 1.1s cursor steps(2, jump-none) infinite;
+  }
+}
+/* 公共样式 */
+.s-animation {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
 }
 
 /* 简单版打字动画 */

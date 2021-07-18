@@ -48,7 +48,7 @@ export default {
   position: relative;
   padding: 10px;
   font-size: 20px;
-  color: var(--text);
+  color: rgba(187, 165, 252, 0.3);
   border-radius: 10px;
   background: transparent;
   transition: 1s;
@@ -75,6 +75,6 @@ export default {
 .note:hover {
   border: 2px solid #f1c40f;
   box-shadow: 0 0px 5px #f1c40f;
-  color: #f1c40f;
+  color: rgb(241, 196, 15);
 }
 </style>

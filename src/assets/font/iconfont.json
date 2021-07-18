@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2073568",
+      "name": "icon_Music2",
+      "font_class": "icon_MyMusicBook",
+      "unicode": "e6bb",
+      "unicode_decimal": 59067
+    },
+    {
       "icon_id": "579551",
       "name": "刷新",
       "font_class": "shuaxin",
@@ -18,13 +25,6 @@
       "font_class": "icon-test",
       "unicode": "e63c",
       "unicode_decimal": 58940
-    },
-    {
-      "icon_id": "22224007",
-      "name": "search",
-      "font_class": "icon-test-copy",
-      "unicode": "e63d",
-      "unicode_decimal": 58941
     }
   ]
 }

@@ -28,7 +28,7 @@ export default {
   width: 197px;
   height: 341px;
   animation: 2s girl infinite linear;
-  /* transition: all 0.1s; */
+  transition: all 0.1s;
   opacity: 0;
 }
 
