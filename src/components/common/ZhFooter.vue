@@ -1,13 +1,5 @@
-<!--
- * @Descripttion: 
- * @version: 1.0
- * @Author: Zhihaot1
- * @Date: 2021-06-16 18:26:34
- * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-16 19:44:10
--->
 <template>
-  <div class='footer'>
+  <div class='zh-footer'>
     <span class="border" @click="toGithub">© 2021 Zhihaot1</span>
     <span class="border">创作不易，请多多支持</span>
     <span>关于</span>
@@ -16,7 +8,7 @@
 
 <script>
 export default {
-  name: 'footer',
+  name: 'zh-footer',
   data() {
     return {}
   },
@@ -29,7 +21,7 @@ export default {
 </script>
 
 <style scoped>
-.footer {
+.zh-footer {
   display: flex;
   justify-content: center;
   position: absolute;
@@ -41,13 +33,13 @@ export default {
   font-size: 12px;
 }
 
-.footer span:hover {
+.zh-footer span:hover {
   cursor: pointer;
   color: #fff;
   transition: all 0.5s;
 }
 
-.footer .border::after {
+.zh-footer .border::after {
   content: "";
   margin: 0 10px;
   border-right: 2px solid #b2bec3;

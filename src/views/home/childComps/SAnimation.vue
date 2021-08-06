@@ -82,7 +82,7 @@ export default {
     position: relative;
     top: 50%;
     left: 50%;
-    font-size: 6rem;
+    font-size: 96px;
     padding: 0;
     height: 109px;
     white-space: nowrap;
@@ -104,11 +104,11 @@ export default {
     content: "";
     display: inline-block;
     position: absolute;
-    width: 10px;
-    height: 6rem;
+    width: 3px;
+    height: 96px;
     background-color: #2c3e50;
     border-radius: 2px;
-    top: 6px;
+    top: 2px;
   }
 
   #h1 span {
@@ -163,12 +163,14 @@ export default {
   }
 
   #h1 {
+    padding: 0 40px;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     overflow: hidden;
     font-family: "Simsun";
+    font-size: 50px;
   }
 
   .one {
@@ -183,11 +185,11 @@ export default {
     content: "";
     display: inline-block;
     position: absolute;
-    width: 2px;
-    height: 36.8px;
+    width: 4px;
+    height: 50px;
     background-color: #dff9fb;
     border-radius: 2px;
-    /* top: 6px; */
+    top: 2px;
   }
 
   #h1 span {

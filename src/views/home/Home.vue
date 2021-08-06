@@ -1,25 +1,23 @@
-<!--
- * @Descripttion: 
- * @version: 1.0
- * @Author: Zhihaot1
- * @Date: 2021-06-11 21:03:51
- * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-16 18:34:55
--->
 <template>
   <div class='home'>
+    <!-- 开场动画 -->
     <s-animation></s-animation>
+    <!-- 轮播字 -->
     <font-swiper class="font-swiper"></font-swiper>
+    <!-- 右上角的logo和note区域 -->
     <div class="right">
       <logo class="logo"></logo>
       <note class='note'></note>
     </div>
-    <sunshine class="sunshine"></sunshine>
+    <!-- 搜索框 -->
     <transition name="fade">
       <search class="search" v-show="!isShow"></search>
     </transition>
+    <!-- 右下角的时钟 -->
     <clock class="clock"></clock>
+    <!-- 全局的鼠标颜色气泡 -->
     <colorful-ball></colorful-ball>
+    <!-- 音乐播放器 -->
     <transition name="fade">
       <music-control v-show="isShow" class="music-control"></music-control>
     </transition>
@@ -27,25 +25,24 @@
     <div :class="['music-show', {'music-high': isShow}]" @click="isShow = !isShow">
       <i class="iconfont icon-icon_MyMusicBook"></i>
     </div>
+    <!-- 奔跑girl动画 -->
     <girl-ani class="girl-ani"></girl-ani>
-    <footer-zhihaot1></footer-zhihaot1>
+    <!-- 版权信息 -->
+    <zh-footer></zh-footer>
   </div>
 </template>
 
 <script>
 import FontSwiper from 'views/home/childComps/FontSwiper';
 import ColorfulBall from 'components/common/ColorfulBall';
-import Sunshine from 'views/home/childComps/Sunshine';
 import GirlAni from 'components/common/GirlAni';
-import Footer from 'components/common/Footer';
+import ZhFooter from 'components/common/ZhFooter';
 import Search from 'components/common/Search';
 import Clock from 'components/common/Clock';
 import Logo from 'views/home/childComps/Logo';
 import Note from 'views/home/childComps/Note';
 import SAnimation from 'views/home/childComps/SAnimation';
 import MusicControl from 'components/common/MusicControl';
-
-
 
 export default {
   name: 'home',
@@ -59,13 +56,12 @@ export default {
     ColorfulBall,
     SAnimation,
     FontSwiper,
-    Sunshine,
     GirlAni,
     Search,
-    'footerZhihaot1': Footer,
+    ZhFooter,
     Clock,
     Logo,
-    Note
+    Note,
   }
 }
 </script>
@@ -122,24 +118,7 @@ export default {
   .sunshine {
     display: none;
   }
-  .music-show {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 65%;
-    left: 0;
-    z-index: 10;
-    width: 45px;
-    height: 45px;
-    border: 2px solid #0984e3;
-    border-radius: 50%;
-    color: #0984e3;
-    transition: all 0.5s;
-  }
-  .icon-icon_MyMusicBook {
-    font-size: 40px;
-  }
+
   .girl-ani {
     position: absolute;
     left: 0;
@@ -161,18 +140,38 @@ export default {
   .clock {
     display: none;
   }
-  .music-high {
-    border: none;
-    background-color: #0984e3;
-    color: #fff;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 1s;
-  }
+}
+/* 公共样式 */
+.music-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 65%;
+  left: 0;
+  z-index: 10;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #0984e3;
+  border-radius: 50%;
+  color: #0984e3;
+  transition: all 0.5s;
+}
+.icon-icon_MyMusicBook {
+  font-size: 40px;
+}
+
+.music-high {
+  border: none;
+  background-color: #0984e3;
+  color: #fff;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
 }
 </style>
