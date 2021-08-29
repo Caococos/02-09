@@ -10,17 +10,22 @@
       <note class='note'></note>
     </div>
     <!-- 搜索框 -->
-    <transition name="fade">
-      <search class="search" v-show="!isShow"></search>
-    </transition>
+    <div class="absolute-search">
+      <transition name="fade">
+        <search class="search" v-show="!isShow"></search>
+      </transition>
+    </div>
     <!-- 右下角的时钟 -->
     <clock class="clock"></clock>
     <!-- 全局的鼠标颜色气泡 -->
     <colorful-ball></colorful-ball>
     <!-- 音乐播放器 -->
-    <transition name="fade">
-      <music-control v-show="isShow" class="music-control"></music-control>
-    </transition>
+    <div class="absolute-music">
+      <transition name="fade">
+        <music-control v-show="isShow" class="music-control"></music-control>
+      </transition>
+    </div>
+
     <!-- 音乐显示控制 -->
     <div :class="['music-show', {'music-high': isShow}]" @click="isShow = !isShow">
       <i class="iconfont icon-icon_MyMusicBook"></i>
@@ -28,7 +33,7 @@
     <!-- 奔跑girl动画 -->
     <girl-ani class="girl-ani"></girl-ani>
     <!-- 版权信息 -->
-    <zh-footer></zh-footer>
+    <zh-footer class="version-footer"></zh-footer>
   </div>
 </template>
 
@@ -140,6 +145,9 @@ export default {
   .clock {
     display: none;
   }
+  .version-footer {
+    color: #341f97;
+  }
 }
 /* 公共样式 */
 .music-show {
@@ -173,5 +181,13 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 1s;
+}
+
+.absolute-search,
+.absolute-music {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  width: 100%;
 }
 </style>

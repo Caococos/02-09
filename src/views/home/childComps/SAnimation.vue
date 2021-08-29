@@ -158,19 +158,19 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center; */
-    background-image: url(~assets/img/bg3.jpg);
-    color: #dff9fb;
+    background-image: url(~assets/img/bg6.jpg);
+    color: #130f40;
   }
 
   #h1 {
-    padding: 0 40px;
+    padding-left: 40px;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
     overflow: hidden;
     font-family: "Simsun";
-    font-size: 50px;
+    font-size: 7vw;
   }
 
   .one {
@@ -178,7 +178,7 @@ export default {
   }
 
   .two {
-    top: 70%;
+    top: 75%;
   }
 
   [data-h1]::after {
@@ -187,7 +187,7 @@ export default {
     position: absolute;
     width: 4px;
     height: 50px;
-    background-color: #dff9fb;
+    background-color: #130f40;
     border-radius: 2px;
     top: 2px;
   }
