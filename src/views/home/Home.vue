@@ -148,6 +148,16 @@ export default {
   .version-footer {
     color: #341f97;
   }
+  .absolute-search,
+  .absolute-music {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 100%;
+  }
+  .absolute-search {
+    bottom: 140px;
+  }
 }
 /* 公共样式 */
 .music-show {
@@ -181,13 +191,5 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 1s;
-}
-
-.absolute-search,
-.absolute-music {
-  position: absolute;
-  left: 0;
-  bottom: 40px;
-  width: 100%;
 }
 </style>
