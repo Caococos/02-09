@@ -35,11 +35,11 @@ export default {
   name: 'music-control',
   data() {
     this.audioSrcs = [
-      'http://music.163.com/song/media/outer/url?id=1350160463.mp3',
-      'http://music.163.com/song/media/outer/url?id=1840459406.mp3',
-      'http://music.163.com/song/media/outer/url?id=541499338.mp3',
-      'http://music.163.com/song/media/outer/url?id=29758203.mp3',
-      'http://music.163.com/song/media/outer/url?id=30251317.mp3'
+      'http://music.163.com/song/media/outer/url?id=28815677.mp3', //下一站天后
+      'http://music.163.com/song/media/outer/url?id=1350160463.mp3', //勾指起誓
+      'http://music.163.com/song/media/outer/url?id=1840459406.mp3', //崂山水
+      'http://music.163.com/song/media/outer/url?id=541499338.mp3', //キララ
+      'http://music.163.com/song/media/outer/url?id=30251317.mp3', //世界坠入爱河-pika
     ];
     return {
       isPlay: false,
