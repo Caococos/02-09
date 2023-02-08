@@ -1,14 +1,12 @@
-<!--
- * @Descripttion: 
- * @version: 1.0
- * @Author: Zhihaot1
- * @Date: 2021-06-12 16:37:33
- * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-16 19:45:39
--->
 <template>
-  <div class='search'>
-    <input type="text" class="text" v-model="search" placeholder="是露露呀" @keyup.enter="searchContent">
+  <div class="search">
+    <input
+      type="text"
+      class="text"
+      v-model="search"
+      placeholder="What do u want to know?"
+      @keyup.enter="searchContent"
+    />
     <div class="btn iconfont icon-icon-test" @click="searchContent"></div>
   </div>
 </template>
@@ -40,9 +38,10 @@ export default {
   justify-content: center;
   align-items: center;
   /* 垂直对齐 */
-  background: #a29bfe;
+  background: transparent;
   height: 60px;
-  border-radius: 40px;
+  border-radius: 50px;
+  transition: transform 1s ease-in-out;
 }
 
 .btn {
@@ -68,13 +67,18 @@ export default {
   width: 300px;
   padding: 0 6px;
 }
+.search:hover {
+  transform: scale(1.2);
+}
 
 .search:hover > .btn {
   color: #fff;
   background-color: #2c3e50;
-  height: 50px;
+  transform-origin: center;
+  transform: scale(0.8);
+  /* height: 50px;
   width: 50px;
-  line-height: 50px;
+  line-height: 50px; */
 }
 
 .text:focus {

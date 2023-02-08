@@ -1,15 +1,7 @@
-<!--
- * @Descripttion: 
- * @version: 1.0
- * @Author: Zhihaot1
- * @Date: 2021-06-15 16:58:51
- * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-17 09:16:54
--->
 <template>
-  <div class='music-control'>
+  <div class="music-control">
     <div class="music__main">
-      <div :class="['music__cover',isPlay ? 'active' : '']" @click="play">
+      <div :class="['music__cover', isPlay ? 'active' : '']" @click="play">
         <img src="~assets/img/music.jpg" />
       </div>
       <div class="music__main__timeBar">
@@ -26,7 +18,7 @@
       <i class="iconfont icon-shuaxin" @click="switchMusic"></i>
     </div>
     <div class="music__mask"></div>
-    <audio ref="music" :src="audioSrc" autoplay="autoplay"></audio>
+    <audio ref="music" :src="audioSrc"></audio>
   </div>
 </template>
 
@@ -39,107 +31,107 @@ export default {
       'http://music.163.com/song/media/outer/url?id=1350160463.mp3', //勾指起誓
       'http://music.163.com/song/media/outer/url?id=1840459406.mp3', //崂山水
       'http://music.163.com/song/media/outer/url?id=541499338.mp3', //キララ
-      'http://music.163.com/song/media/outer/url?id=30251317.mp3', //世界坠入爱河-pika
-    ];
+      'http://music.163.com/song/media/outer/url?id=30251317.mp3' //世界坠入爱河-pika
+    ]
     return {
       isPlay: false,
-      realMusicTime: "00:00",
-      totalMusicTime: "00:00",
+      realMusicTime: '00:00',
+      totalMusicTime: '00:00',
       audioSrc: this.audioSrcs[0]
-    };
+    }
   },
   mounted() {
-    this.watchMusicTime();
+    this.watchMusicTime()
   },
   methods: {
     play() {
       if (this.music.paused) {
-        this.music.play();
-        this.isPlay = true;
+        this.music.play()
+        this.isPlay = true
       } else {
-        this.music.pause();
-        this.isPlay = false;
+        this.music.pause()
+        this.isPlay = false
       }
     },
     // 处理时间
     handlMusicTime() {
       //用秒数来显示当前播放进度
-      let timeDisplay = Math.floor(this.music.currentTime); //获取实时时间
+      let timeDisplay = Math.floor(this.music.currentTime) //获取实时时间
       //分钟
-      let minute = parseInt(timeDisplay / 60);
+      let minute = parseInt(timeDisplay / 60)
       if (minute < 10) {
-        minute = "0" + minute;
+        minute = '0' + minute
       }
       //秒
-      let second = Math.round(timeDisplay % 60);
+      let second = Math.round(timeDisplay % 60)
       if (second < 10) {
-        second = "0" + second;
+        second = '0' + second
       }
-      this.realMusicTime = minute + ":" + second;
+      this.realMusicTime = minute + ':' + second
     },
     // 处理进度条
     handMusicBar() {
-      let slid = this.$refs.slid;
-      let duration = this.music.duration;
-      let x = ((this.music.currentTime / duration) * 100).toFixed(2) + "%";
-      slid.style.width = x;
+      let slid = this.$refs.slid
+      let duration = this.music.duration
+      let x = ((this.music.currentTime / duration) * 100).toFixed(2) + '%'
+      slid.style.width = x
     },
     // 处理点击进度条事件
     handClickBar(e) {
-      const barTotalWidth = this.bar.offsetWidth; // bar 总宽度
-      const rect = e.target.getBoundingClientRect(); // 元素右边距离页面边距的距离 返回上下左右
-      let length = e.pageX - rect.left;
-      this.music.currentTime = length / barTotalWidth * this.music.duration; // 计算播放时间 位置百分比*总时间
+      const barTotalWidth = this.bar.offsetWidth // bar 总宽度
+      const rect = e.target.getBoundingClientRect() // 元素右边距离页面边距的距离 返回上下左右
+      let length = e.pageX - rect.left
+      this.music.currentTime = (length / barTotalWidth) * this.music.duration // 计算播放时间 位置百分比*总时间
       this.$nextTick(() => {
-        this.music.play();
-        this.isPlay = true;
+        this.music.play()
+        this.isPlay = true
       })
     },
     // 切换歌曲
     switchMusic() {
-      this.isPlay = false;
-      this.audioSrc = this.audioSrcs[Math.floor(Math.random() * this.audioSrcs.length)];
+      this.isPlay = false
+      this.audioSrc = this.audioSrcs[Math.floor(Math.random() * this.audioSrcs.length)]
       this.music.load()
       // 文件下载完毕，如果不用等到全部下载完毕，可以用canplay事件
-      this.music.addEventListener("canplaythrough", () => {
-        this.music.play();
-        this.isPlay = true;
-      });
+      this.music.addEventListener('canplaythrough', () => {
+        this.music.play()
+        this.isPlay = true
+      })
     },
     //使用事件监听方式捕捉事件
     watchMusicTime() {
-      this.music = this.$refs.music;
-      this.bar = this.$refs.bar;
+      this.music = this.$refs.music
+      this.bar = this.$refs.bar
       this.music.addEventListener(
-        "timeupdate",
+        'timeupdate',
         () => {
-          this.handlMusicTime();
+          this.handlMusicTime()
           this.$nextTick(() => {
-            this.handMusicBar();
+            this.handMusicBar()
           })
         },
         false
-      );
+      )
       // 播放完毕
-      this.music.addEventListener("ended", () => {
-        this.switchMusic(); // 自动播放
-      });
+      this.music.addEventListener('ended', () => {
+        this.switchMusic() // 自动播放
+      })
       // 捕获音频文件已准备完毕
       // 当媒体文件可以播放的时候会触发oncanplay事件,也可以用oncanplay
       this.music.oncanplaythrough = () => {
-        let time = this.music.duration;
+        let time = this.music.duration
         //分钟
-        let minutes = parseInt(time / 60);
+        let minutes = parseInt(time / 60)
         if (minutes < 10) {
-          minutes = "0" + minutes;
+          minutes = '0' + minutes
         }
         //秒
-        let seconds = Math.round(time % 60);
+        let seconds = Math.round(time % 60)
         if (seconds < 10) {
-          seconds = "0" + seconds;
+          seconds = '0' + seconds
         }
-        this.totalMusicTime = minutes + ":" + seconds;
-      };
+        this.totalMusicTime = minutes + ':' + seconds
+      }
     }
   }
 }
@@ -236,7 +228,7 @@ export default {
   color: #fff;
 }
 .music__mask {
-  background-image: url("~assets/img/music.jpg");
+  background-image: url('~assets/img/music.jpg');
   z-index: -2;
   background-repeat: no-repeat;
   background-size: cover;
@@ -257,7 +249,7 @@ export default {
   left: 0;
   bottom: 0;
   z-index: -1;
-  content: "";
+  content: '';
   background-color: rgba(0, 0, 0, 0.08);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class='zh-footer'>
+  <div class="zh-footer">
     <span class="border" @click="toGithub">© 2021 Zhihaot1</span>
     <span class="border">创作不易，请多多支持</span>
     <span>关于</span>
@@ -29,7 +29,7 @@ export default {
   left: 50%;
   width: 100%;
   transform: translateX(-50%);
-  color: #b2bec3;
+  color: #000;
   font-size: 12px;
 }
 
@@ -40,7 +40,7 @@ export default {
 }
 
 .zh-footer .border::after {
-  content: "";
+  content: '';
   margin: 0 10px;
   border-right: 2px solid #b2bec3;
 }
