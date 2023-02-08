@@ -1,23 +1,20 @@
-<!--
- * @Descripttion: 
- * @version: 1.0
- * @Author: Zhihaot1
- * @Date: 2021-06-14 20:59:44
- * @LastEditors: Zhihaot1
- * @LastEditTime: 2021-06-15 17:10:38
--->
 <template>
-  <transition name="fade">
-    <div class='s-animation' v-show="isShow" @click="enter">
-      <h1 id="h1" data-h1 class="one">
-        <span v-for="(item, index) in msg1" :key="index">{{item}}</span>
-      </h1>
-      <h1 id="h1" class="two">
-        <span v-for="(item, index) in msg2" :key="index">{{item}}</span>
-      </h1>
-    </div>
-  </transition>
-
+  <div class="s-animation" @click="enter" v-show="open">
+    <ul class="stacks">
+      <li :style="{ transform: isShow ? 'translateX(0)' : 'translateX(-50vw)' }"></li>
+      <li :style="{ transform: isShow ? 'translateX(0)' : 'translateX(50vw)' }"></li>
+    </ul>
+    <transition name="fade">
+      <div class="text-container" v-show="isShow">
+        <h1 id="h1" data-h1 class="one">
+          <span v-for="(item, index) in msg1" :key="index">{{ item }}</span>
+        </h1>
+        <h1 id="h1" class="two">
+          <span v-for="(item, index) in msg2" :key="index">{{ item }}</span>
+        </h1>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -27,7 +24,8 @@ export default {
     return {
       msg1: '有个少女经过你的眼前',
       msg2: '带着你的视线 跑进了夏天',
-      isShow: true
+      isShow: true,
+      open: true
     }
   },
   mounted() {
@@ -38,6 +36,9 @@ export default {
   methods: {
     enter() {
       this.isShow = false
+      setTimeout(() => {
+        this.open = false
+      }, 1000)
     },
     typing() {
       const h1 = document.querySelectorAll('#h1')[0]
@@ -50,7 +51,7 @@ export default {
         if (index === 4 || index === 10 || index === 17) delay += 0.3
         span.style.setProperty('--delay', `${delay}s`)
       })
-      h1.addEventListener('animationend', e => {
+      h1.addEventListener('animationend', (e) => {
         if (e.target === document.querySelector('.one span:last-child')) {
           setTimeout(() => {
             h1.removeAttribute('data-h1')
@@ -58,7 +59,7 @@ export default {
           }, 300)
         }
       })
-      h2.addEventListener('animationend', e => {
+      h2.addEventListener('animationend', (e) => {
         if (e.target === document.querySelector('.two span:last-child')) {
           h2.classList.add('ended')
         }
@@ -69,39 +70,65 @@ export default {
 </script>
 
 <style scoped>
+/* pc */
 @media only screen and (min-width: 1280px) {
   .s-animation {
     /* background-color: rgb(233, 191, 191); */
-    background-image: url(~assets/img/bg2.jpg);
-    background-size: cover;
     overflow: hidden;
     color: #2c3e50;
+  }
+  .stacks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+  }
+  ul.stacks li {
+    position: relative;
+    background-color: #ccc;
+    flex: 1;
+    overflow: hidden;
+    transition: 1s transform ease-in-out;
+  }
+  li::after {
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(~assets/img/bg2.jpg) no-repeat;
+    background-size: cover;
+  }
+  ul.stacks li:nth-child(2)::after {
+    left: -50vw;
   }
 
   #h1 {
     position: relative;
-    top: 50%;
-    left: 50%;
     font-size: 96px;
-    padding: 0;
     height: 109px;
     white-space: nowrap;
     overflow: hidden;
-    font-family: "Simsun";
+    font-family: 'Simsun';
+    text-align: start;
   }
-
-  .one {
-    transform: translate(-50%, -100%);
-    margin-left: 100px;
+  .text-container {
+    position: fixed;
   }
-
+  .s-animation .text-container {
+    padding: 0 80px;
+    width: 100%;
+  }
   .two {
-    transform: translate(-50%, -50%);
-    margin-left: 150px;
+    margin-left: calc(100vw - 1360px);
   }
 
   [data-h1]::after {
-    content: "";
+    content: '';
     display: inline-block;
     position: absolute;
     width: 3px;
@@ -144,7 +171,7 @@ export default {
 }
 
 .fade-leave-active {
-  transition: opacity 1s;
+  transition: opacity 0.75s;
 }
 
 .fade-leave-to {
@@ -169,7 +196,7 @@ export default {
     transform: translate(-50%, -50%);
     width: 100%;
     overflow: hidden;
-    font-family: "Simsun";
+    font-family: 'Simsun';
     font-size: 7vw;
   }
 
@@ -182,7 +209,7 @@ export default {
   }
 
   [data-h1]::after {
-    content: "";
+    content: '';
     display: inline-block;
     position: absolute;
     width: 4px;
@@ -214,37 +241,8 @@ export default {
   height: 100%;
   background-size: cover;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-/* 简单版打字动画 */
-/* .one {
-  width: 0;
-  transform: translate(-50%, -200%);
-  animation: 4s typing1 steps(11, jump-none) forwards;
-}
-
-.two {
-  width: 0;
-  transform: translate(-50%, -50%);
-  animation: 4s typing2 steps(12, jump-none) forwards;
-  animation-delay: 4s;
-}
-
-@keyframes typing1 {
-  from {
-    width: 2ch;
-  }
-  to {
-    width: 20ch;
-  }
-}
-
-@keyframes typing2 {
-  from {
-    width: 2ch;
-  }
-  to {
-    width: 24ch;
-  }
-} */
 </style>
