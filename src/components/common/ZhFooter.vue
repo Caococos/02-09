@@ -42,6 +42,6 @@ export default {
 .zh-footer .border::after {
   content: '';
   margin: 0 10px;
-  border-right: 2px solid #b2bec3;
+  border-right: 2px solid #fce8e8;
 }
 </style>

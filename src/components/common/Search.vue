@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="search" @click="$emit('click')">
     <input
       type="text"
       class="text"
@@ -46,13 +46,13 @@ export default {
 
 .btn {
   /* float: right; */
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   transition: 1s;
-  line-height: 60px;
+  line-height: 80px;
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
 }
 
 .text {
@@ -68,7 +68,7 @@ export default {
   padding: 0 6px;
 }
 .search:hover {
-  transform: scale(1.2);
+  transform: scale(1.4);
 }
 
 .search:hover > .btn {
