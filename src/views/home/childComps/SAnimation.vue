@@ -1,8 +1,8 @@
 <template>
   <div class="s-animation" @click="enter" v-show="open">
     <ul class="stacks">
-      <li :style="{ transform: isShow ? 'translateX(0)' : 'translateX(-50vw)' }"></li>
-      <li :style="{ transform: isShow ? 'translateX(0)' : 'translateX(50vw)' }"></li>
+      <li :style="{ transform: showBg ? 'translateX(0)' : 'translateX(-50vw)' }"></li>
+      <li :style="{ transform: showBg ? 'translateX(0)' : 'translateX(50vw)' }"></li>
     </ul>
     <!-- <transition name="fade">
       <div class="text-container" v-show="isShow">
@@ -14,7 +14,9 @@
         </h1>
       </div>
     </transition> -->
-    <div :data-spotlight="lightText" class="light-text">{{ lightText }}</div>
+    <div :data-spotlight="lightText" :class="['light-text', 'animate__animated', { animate__zoomOutUp: !showText }]">
+      {{ lightText }}
+    </div>
   </div>
 </template>
 
@@ -26,7 +28,8 @@ export default {
       msg1: '',
       msg2: '',
       lightText: '',
-      isShow: true,
+      showBg: true,
+      showText: true,
       open: true,
       currMonth: new Date().getMonth() + 1
     }
@@ -98,10 +101,13 @@ export default {
   },
   methods: {
     enter() {
-      this.isShow = false
+      this.showText = false
+      setTimeout(() => {
+        this.showBg = false
+      }, 900)
       setTimeout(() => {
         this.open = false
-      }, 1000)
+      }, 2000)
     },
     typing() {
       const h1 = document.querySelectorAll('#h1')[0]

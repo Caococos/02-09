@@ -4,11 +4,7 @@
     <s-animation></s-animation>
     <div class="content" ref="contentRef">
       <music-control @play="showMusic" class="music-control animate__animated"></music-control>
-      <img
-        class="animate__animated"
-        src="https://cdn.jsdelivr.net/gh/caococos/resource-set@master/img/lulus.jpg"
-        alt="Zhihaot1"
-      />
+      <img class="animate__animated" src="~assets/img/lulus.jpg" alt="Zhihaot1" />
       <span class="animate__animated">lulu / 扎着丸子头的牛栏山小仙女</span>
       <search @click="clickSearch" class="search animate__animated"></search>
     </div>
