@@ -1,6 +1,6 @@
 <template>
   <div class="zh-footer">
-    <span class="border" @click="toGithub">© 2021 Zhihaot1</span>
+    <span class="border" @click="toGithub">© 2021-2023 Zhihaot1</span>
     <span class="border">创作不易，请多多支持</span>
     <span>关于</span>
   </div>

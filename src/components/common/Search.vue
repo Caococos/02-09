@@ -41,7 +41,7 @@ export default {
   background: transparent;
   height: 60px;
   border-radius: 50px;
-  transition: transform 1s ease-in-out;
+  transition: transform 1s ease;
 }
 
 .btn {

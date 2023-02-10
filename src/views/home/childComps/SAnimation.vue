@@ -95,9 +95,9 @@ export default {
     this.msg1 = arr1[num]
     this.msg2 = arr2[num]
     this.lightText = lightArr[num]
-    this.$nextTick(() => {
-      this.typing()
-    })
+    // this.$nextTick(() => {
+    //   this.typing()
+    // })
   },
   methods: {
     enter() {
@@ -185,7 +185,7 @@ export default {
     background-color: #ccc;
     flex: 1;
     overflow: hidden;
-    transition: 1s transform ease-in-out;
+    transition: 0.75s transform ease-in-out;
   }
   li::after {
     content: '';

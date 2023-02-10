@@ -36,6 +36,7 @@ export default {
 .music-bounce {
   display: flex;
   width: 100vw;
+  pointer-events: none;
 }
 .music-bounce span {
   display: block;
@@ -74,6 +75,11 @@ export default {
   }
   50% {
     clip-path: inset(100% 0% 0% 0%);
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .music-bounce span {
+    height: 80px;
   }
 }
 </style>

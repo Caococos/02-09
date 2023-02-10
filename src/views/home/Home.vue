@@ -2,6 +2,7 @@
   <div class="home" @click.capture="removeAnimation">
     <!-- 开场动画 -->
     <s-animation></s-animation>
+    <!-- <hamburger-menu></hamburger-menu> -->
     <div class="content" ref="contentRef">
       <music-control @play="showMusic" class="music-control animate__animated"></music-control>
       <img class="animate__animated" src="~assets/img/lulus.jpg" alt="Zhihaot1" />
@@ -35,6 +36,7 @@ import Note from 'views/home/childComps/Note'
 import SAnimation from 'views/home/childComps/SAnimation'
 import MusicControl from 'components/common/MusicControl'
 import MusicBounce from 'components/common/MusicBounce'
+import HamburgerMenu from 'components/common/HamburgerMenu'
 
 export default {
   name: 'home',
@@ -56,15 +58,25 @@ export default {
     Clock,
     Logo,
     Note,
-    MusicBounce
+    MusicBounce,
+    HamburgerMenu
   },
   methods: {
     clickSearch() {
+      const screenWidth = window.screen.width
       this.clickNum = 2
       const refArr = this.$refs.contentRef.children
       for (let index = 0; index < refArr.length; index++) {
+        const element = refArr[index]
+        if (index === 3) {
+          setTimeout(() => {
+            element.style =
+              screenWidth >= 768
+                ? 'transform: translateY(-450%) scale(1.4);'
+                : 'transform: translateY(-450%) scale(.8);'
+          })
+        }
         if (index !== 3) {
-          const element = refArr[index]
           element.classList.add('animate__fadeOutUp')
         }
       }
@@ -77,6 +89,7 @@ export default {
         element.classList.remove('animate__fadeInDown')
         element.classList.remove('animate__fadeOutUp')
         element.classList.remove('animate__fadeOutDown')
+        element.style = ''
         if (this.clickNum === 1) {
           if (index !== 0) {
             element.classList.add('animate__fadeInUp')
@@ -95,8 +108,13 @@ export default {
       this.clickNum = 1
       const refArr = this.$refs.contentRef.children
       for (let index = 0; index < refArr.length; index++) {
+        const element = refArr[index]
+        if (index === 0) {
+          setTimeout(() => {
+            element.style = 'transform: translateY(150%);'
+          })
+        }
         if (index !== 0) {
-          const element = refArr[index]
           element.classList.add('animate__fadeOutDown')
         }
       }
@@ -112,10 +130,12 @@ export default {
   height: 100vh;
   overflow: hidden;
 }
-.search-container {
-  display: flex;
-  justify-content: center;
+.music-control {
+  transition: transform 0.75s ease;
 }
+/* .search {
+  transition: transform 0.75s ease-in-out;
+} */
 .content {
   position: fixed;
   top: 0;
@@ -144,6 +164,14 @@ export default {
 }
 /* 移动端 */
 @media only screen and (max-width: 1280px) {
+  .content {
+    position: static;
+    height: 75vh;
+  }
+  .content img {
+    width: 150px;
+    height: 150px;
+  }
 }
 .fade-enter,
 .fade-leave-to {

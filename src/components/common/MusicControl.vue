@@ -1,5 +1,5 @@
 <template>
-  <div class="music-control">
+  <div class="music-control" @click="$emit('click')">
     <div class="music__main">
       <div :class="['music__cover', isPlay ? 'active' : '']" @click="play">
         <img src="~assets/img/music.jpg" />
@@ -27,11 +27,11 @@ export default {
   name: 'music-control',
   data() {
     this.audioSrcs = [
-      'http://music.163.com/song/media/outer/url?id=30251317.mp3', //世界坠入爱河-pika
+      'http://music.163.com/song/media/outer/url?id=2007721646.mp3', //嘘つき-早稻叽
+      'http://music.163.com/song/media/outer/url?id=30251317.mp3' //世界坠入爱河-pika
       //'http://music.163.com/song/media/outer/url?id=28815677.mp3', //下一站天后
       //'http://music.163.com/song/media/outer/url?id=1350160463.mp3', //勾指起誓
-      'http://music.163.com/song/media/outer/url?id=1840459406.mp3', //崂山水
-      'http://music.163.com/song/media/outer/url?id=541499338.mp3' //キララ
+      //image.png'http://music.163.com/song/media/outer/url?id=1840459406.mp3', //崂山水
     ]
     return {
       isPlay: false,
@@ -42,7 +42,7 @@ export default {
   },
   mounted() {
     this.watchMusicTime()
-    this.music.volume = 0.2
+    this.music.volume = 0.3
   },
   methods: {
     play() {
@@ -157,6 +157,7 @@ export default {
   border-radius: 15px;
   position: relative;
   padding: 30px;
+  min-width: 300px;
   box-sizing: border-box;
   overflow: hidden;
 }
