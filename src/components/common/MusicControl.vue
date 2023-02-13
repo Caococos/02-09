@@ -14,11 +14,16 @@
         </div>
       </div>
     </div>
+    <div class="music_name">
+      <span :style="{ animationPlayState: isPlay ? 'running' : 'paused' }">{{ audioSrc.name }}</span>
+      <span :style="{ animationPlayState: isPlay ? 'running' : 'paused' }">{{ audioSrc.name }}</span>
+    </div>
+    <div class="name_tip">{{ audioSrc.name }}</div>
     <div class="music__btn">
       <i class="iconfont icon-shuaxin" @click="switchMusic"></i>
     </div>
     <div class="music__mask"></div>
-    <audio ref="music" :src="audioSrc"></audio>
+    <audio ref="music" :src="audioSrc.src"></audio>
   </div>
 </template>
 
@@ -27,8 +32,10 @@ export default {
   name: 'music-control',
   data() {
     this.audioSrcs = [
-      'http://music.163.com/song/media/outer/url?id=2007721646.mp3', //嘘つき-早稻叽
-      'http://music.163.com/song/media/outer/url?id=30251317.mp3' //世界坠入爱河-pika
+      { src: 'http://music.163.com/song/media/outer/url?id=2007721646.mp3', name: '嘘つき-早稻叽' }, //嘘つき-早稻叽
+      { src: 'http://music.163.com/song/media/outer/url?id=30251317.mp3', name: '世界は恋に落ちている-pika' }, //世界坠入爱河-pika
+      { src: 'http://music.163.com/song/media/outer/url?id=2015001195.mp3', name: '小さいな恋のうた-椎白真昼' }, //小小恋歌
+      { src: 'http://music.163.com/song/media/outer/url?id=458231455.mp3', name: '回る空うさぎ-miku' } //月兔回旋于空中
       //'http://music.163.com/song/media/outer/url?id=28815677.mp3', //下一站天后
       //'http://music.163.com/song/media/outer/url?id=1350160463.mp3', //勾指起誓
       //image.png'http://music.163.com/song/media/outer/url?id=1840459406.mp3', //崂山水
@@ -212,10 +219,49 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: #e24d80;
+  background-image: radial-gradient(
+    circle farthest-corner at 92.3% 71.5%,
+    rgba(83, 138, 214, 1) 0%,
+    rgba(134, 231, 214, 1) 90%
+  );
   height: 100%;
   width: 0;
   transition: width 0.3s;
+}
+.music_name {
+  position: absolute;
+  left: 45%;
+  top: 25px;
+  width: 150px;
+  height: 21px;
+  color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  /* display: flex; */
+}
+.music_name span {
+  display: inline-block;
+  padding: 0 5px;
+  min-width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+.music_name span:nth-child(1) {
+  animation: transformX1 5s linear infinite;
+}
+.music_name span:nth-child(2) {
+  animation: transformX2 5s linear infinite;
+}
+.music_name:hover + .name_tip {
+  opacity: 1;
+}
+.name_tip {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  color: #fff;
 }
 .music__btn {
   position: absolute;
@@ -254,5 +300,18 @@ export default {
   z-index: -1;
   content: '';
   background-color: rgba(0, 0, 0, 0.08);
+}
+@keyframes transformX1 {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes transformX2 {
+  0% {
+    transform: translate(100%, -100%);
+  }
+  100% {
+    transform: translate(0%, -100%);
+  }
 }
 </style>

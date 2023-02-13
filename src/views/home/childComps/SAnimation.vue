@@ -165,123 +165,123 @@ export default {
   align-items: center;
 }
 /* pc */
-@media only screen and (min-width: 1280px) {
-  .s-animation {
-    /* background-color: rgb(233, 191, 191); */
-    overflow: hidden;
-    color: #2c3e50;
-  }
-  .stacks {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-  }
-  ul.stacks li {
-    position: relative;
-    background-color: #ccc;
-    flex: 1;
-    overflow: hidden;
-    transition: 0.75s transform ease-in-out;
-  }
-  li::after {
-    content: '';
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    background-size: cover;
-  }
-  ul.stacks li:nth-child(2)::after {
-    left: -50vw;
-  }
+/* @media only screen and (min-width: 1280px) { */
+.s-animation {
+  /* background-color: rgb(233, 191, 191); */
+  overflow: hidden;
+  color: #2c3e50;
+}
+.stacks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+ul.stacks li {
+  position: relative;
+  background-color: #ccc;
+  flex: 1;
+  overflow: hidden;
+  transition: 0.75s transform ease-in-out;
+}
+li::after {
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  background-size: cover;
+}
+ul.stacks li:nth-child(2)::after {
+  left: -50vw;
+}
 
-  #h1 {
-    position: relative;
-    font-size: 75px;
-    height: 109px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-family: 'Simsun';
-    text-align: start;
-  }
-  .text-container {
-    position: fixed;
-  }
-  .s-animation .text-container {
-    padding: 0 80px;
-    width: 100%;
-  }
-  .two {
-    margin-left: calc(100vw - 1360px);
-  }
+#h1 {
+  position: relative;
+  font-size: 75px;
+  height: 109px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Simsun';
+  text-align: start;
+}
+.text-container {
+  position: fixed;
+}
+.s-animation .text-container {
+  padding: 0 80px;
+  width: 100%;
+}
+.two {
+  margin-left: calc(100vw - 1360px);
+}
 
-  [data-h1]::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    width: 3px;
-    height: 93px;
-    background-color: #2c3e50;
-    border-radius: 2px;
-    top: 2px;
-  }
+[data-h1]::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 3px;
+  height: 93px;
+  background-color: #2c3e50;
+  border-radius: 2px;
+  top: 2px;
+}
 
-  #h1 span {
-    /* 延迟预设值 */
-    --delay: 10s;
-    display: inline-block;
-    overflow: hidden;
-    width: 0;
-    animation: 0.1s text-in ease-in-out forwards;
-    animation-delay: var(--delay);
-  }
+#h1 span {
+  /* 延迟预设值 */
+  --delay: 10s;
+  display: inline-block;
+  overflow: hidden;
+  width: 0;
+  animation: 0.1s text-in ease-in-out forwards;
+  animation-delay: var(--delay);
+}
 
-  h1.ended::after {
-    animation: 1.1s cursor steps(2, jump-none) infinite;
+h1.ended::after {
+  animation: 1.1s cursor steps(2, jump-none) infinite;
+}
+.light-text {
+  position: relative;
+  color: rgba(51, 51, 51, 0.3);
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+  letter-spacing: -0.3rem;
+}
+.light-text:after {
+  content: attr(data-spotlight);
+  color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: spotlight 12s ease-in-out infinite;
+  background-image: url(https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+@keyframes spotlight {
+  0% {
+    -webkit-clip-path: ellipse(100px 100px at 0% 50%);
+    clip-path: ellipse(100px 100px at 0% 50%);
   }
-  .light-text {
-    position: relative;
-    color: rgba(51, 51, 51, 0.3);
-    font-family: Helvetica;
-    margin: 0;
-    padding: 0;
-    font-size: 3rem;
-    letter-spacing: -0.3rem;
+  50% {
+    -webkit-clip-path: ellipse(100px 100px at 100% 50%);
+    clip-path: ellipse(100px 100px at 100% 50%);
   }
-  .light-text:after {
-    content: attr(data-spotlight);
-    color: transparent;
-    position: absolute;
-    top: 0;
-    left: 0;
-    animation: spotlight 12s ease-in-out infinite;
-    background-image: url(https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
-    background-size: cover;
-    background-position: center;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-  @keyframes spotlight {
-    0% {
-      -webkit-clip-path: ellipse(100px 100px at 0% 50%);
-      clip-path: ellipse(100px 100px at 0% 50%);
-    }
-    50% {
-      -webkit-clip-path: ellipse(100px 100px at 100% 50%);
-      clip-path: ellipse(100px 100px at 100% 50%);
-    }
-    100% {
-      -webkit-clip-path: ellipse(100px 100px at 0% 50%);
-      clip-path: ellipse(100px 100px at 0% 50%);
-    }
+  100% {
+    -webkit-clip-path: ellipse(100px 100px at 0% 50%);
+    clip-path: ellipse(100px 100px at 0% 50%);
   }
 }
+/* } */
 @keyframes text-in {
   from {
     width: 0;
@@ -309,58 +309,5 @@ export default {
 }
 /* 移动端 */
 @media only screen and (max-width: 1280px) {
-  .s-animation {
-    /* position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-    background-image: url(~assets/img/bg6.jpg);
-    color: #130f40;
-  }
-
-  #h1 {
-    padding-left: 40px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    overflow: hidden;
-    font-family: 'Simsun';
-    font-size: 7vw;
-  }
-
-  .one {
-    top: 60%;
-  }
-
-  .two {
-    top: 75%;
-  }
-
-  [data-h1]::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    width: 4px;
-    height: 50px;
-    background-color: #130f40;
-    border-radius: 2px;
-    top: 2px;
-  }
-
-  #h1 span {
-    /* 延迟预设值 */
-    --delay: 10s;
-    display: inline-block;
-    overflow: hidden;
-    width: 0;
-    animation: 0.1s text-in ease-in-out forwards;
-    animation-delay: var(--delay);
-  }
-
-  h1.ended::after {
-    animation: 1.1s cursor steps(2, jump-none) infinite;
-  }
 }
 </style>
