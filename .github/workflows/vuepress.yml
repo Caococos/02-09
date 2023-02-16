@@ -24,3 +24,4 @@ jobs:
         with:
           personal_token: ${{ secrets.ACCESS_TOKEN }}
           publish_dir: ./dist
+          # BRANCH: 分支名    -提交到指定分支  如无此分支系统会新建

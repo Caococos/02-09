@@ -6,11 +6,18 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "2073568",
-      "name": "icon_Music2",
-      "font_class": "icon_MyMusicBook",
-      "unicode": "e6bb",
-      "unicode_decimal": 59067
+      "icon_id": "24056837",
+      "name": "关闭音量",
+      "font_class": "guanbiyinliang",
+      "unicode": "e70d",
+      "unicode_decimal": 59149
+    },
+    {
+      "icon_id": "24056844",
+      "name": "加大音量",
+      "font_class": "jiadayinliang",
+      "unicode": "e70e",
+      "unicode_decimal": 59150
     },
     {
       "icon_id": "579551",

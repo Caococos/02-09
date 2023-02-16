@@ -1,5 +1,5 @@
 <template>
-  <div class="music-control" @click="$emit('click')">
+  <div class="music-control" @click="$emit('click', isPlay)">
     <div class="music__main">
       <div :class="['music__cover', isPlay ? 'active' : '']" @click="play">
         <img src="~assets/img/music.jpg" />
@@ -21,6 +21,13 @@
     <div class="name_tip">{{ audioSrc.name }}</div>
     <div class="music__btn">
       <i class="iconfont icon-shuaxin" @click="switchMusic"></i>
+    </div>
+    <div class="volume">
+      <span
+        @click="showVolume"
+        :class="['iconfont', { 'icon-jiadayinliang': !isMuted }, { 'icon-guanbiyinliang': isMuted }]"
+      ></span>
+      <span ref="volumeBar" @click="handleVolumeBar" class="volume_bar" data-width="30%"></span>
     </div>
     <div class="music__mask"></div>
     <audio ref="music" :src="audioSrc.src"></audio>
@@ -44,12 +51,14 @@ export default {
       isPlay: false,
       realMusicTime: '00:00',
       totalMusicTime: '00:00',
-      audioSrc: this.audioSrcs[0]
+      audioSrc: this.audioSrcs[0],
+      isMuted: false,
+      volume: 0.3
     }
   },
   mounted() {
     this.watchMusicTime()
-    this.music.volume = 0.3
+    this.music.volume = this.volume
   },
   methods: {
     play() {
@@ -81,15 +90,17 @@ export default {
     // 处理进度条
     handMusicBar() {
       let slid = this.$refs.slid
-      let duration = this.music.duration
-      let x = ((this.music.currentTime / duration) * 100).toFixed(2) + '%'
+      let duration = this.music.duration //音乐总时长
+      let currentTime = this.music.currentTime //音乐当前时间
+      let x = ((currentTime / duration) * 100).toFixed(2) + '%'
       slid.style.width = x
     },
-    // 处理点击进度条事件
+    // 处理点击进度条点击事件
     handClickBar(e) {
       const barTotalWidth = this.bar.offsetWidth // bar 总宽度
-      const rect = e.target.getBoundingClientRect() // 元素右边距离页面边距的距离 返回上下左右
-      let length = e.pageX - rect.left
+      // const rect = e.target.getBoundingClientRect() // 元素右边距离页面边距的距离 返回上下左右
+      const left = this.getElementLeft(e.target)
+      let length = e.pageX - left
       this.music.currentTime = (length / barTotalWidth) * this.music.duration // 计算播放时间 位置百分比*总时间
       this.$nextTick(() => {
         this.music.play()
@@ -141,6 +152,38 @@ export default {
         }
         this.totalMusicTime = minutes + ':' + seconds
       }
+    },
+    // 处理音量点击事件
+    handleVolumeBar(e) {
+      const bar = this.$refs.volumeBar
+      // const rect = e.target.getBoundingClientRect() //getBoundingClientRect 引发页面的重绘
+      const left = this.getElementLeft(e.target)
+      let length = e.pageX - left //音量的长度
+      this.volume = this.music.volume = length / bar.offsetWidth
+      bar.style.setProperty('--width', `${this.volume * 100}%`)
+    },
+    // 音量开关
+    showVolume() {
+      let volume
+      if (this.isMuted) {
+        volume = this.music.volume = this.volume
+      } else {
+        volume = this.music.volume = 0
+      }
+      this.isMuted = !this.isMuted
+      const bar = this.$refs.volumeBar
+      bar.style.setProperty('--width', `${volume * 100}%`)
+    },
+    getElementLeft(element) {
+      let actualLeft = element.offsetLeft
+      let current = element.offsetParent
+
+      while (current !== null) {
+        actualLeft += current.offsetLeft
+        current = current.offsetParent
+      }
+
+      return actualLeft
     }
   }
 }
@@ -263,6 +306,51 @@ export default {
   transition: opacity 0.5s ease-in-out;
   color: #fff;
 }
+.volume {
+  position: absolute;
+  top: 5px;
+  right: 70px;
+  color: #ddf3fd;
+  display: flex;
+  width: 71px;
+  justify-content: start;
+  align-items: center;
+}
+.volume span {
+  cursor: pointer;
+}
+.icon-jiadayinliang:hover ~ .volume_bar {
+  opacity: 1;
+}
+.volume_bar:hover {
+  opacity: 1 !important;
+}
+.volume .volume_bar {
+  position: relative;
+  margin-left: 5px;
+  display: inline-block;
+  opacity: 0;
+  width: 50px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 50px;
+  --width: 30%;
+  transition: opacity 1s ease;
+}
+.volume_bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--width);
+  height: 100%;
+  background-image: radial-gradient(
+    circle farthest-corner at 92.3% 71.5%,
+    rgba(83, 138, 214, 1) 0%,
+    rgba(134, 231, 214, 1) 90%
+  );
+  transition: width 0.3s;
+}
 .music__btn {
   position: absolute;
   right: 30px;
@@ -270,7 +358,7 @@ export default {
 }
 .music__btn i {
   font-size: 18px;
-  color: #b2bec3;
+  color: #ddf3fd;
   cursor: pointer;
 }
 .music__btn i:hover {
