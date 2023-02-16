@@ -1,5 +1,5 @@
 <template>
-  <div class="search" @click="$emit('click')">
+  <div class="search" @click.stop="$emit('click')">
     <input
       type="text"
       class="text"

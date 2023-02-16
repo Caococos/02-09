@@ -1,5 +1,5 @@
 <template>
-  <div class="home" @click.capture="removeAnimation">
+  <div class="home" @click="removeAnimation">
     <!-- 开场动画 -->
     <s-animation></s-animation>
     <!-- <hamburger-menu></hamburger-menu> -->
@@ -69,6 +69,7 @@ export default {
       for (let index = 0; index < refArr.length; index++) {
         const element = refArr[index]
         if (index === 3) {
+          // element.className = 'search animate__animated'
           setTimeout(() => {
             element.style =
               screenWidth >= 768
@@ -93,11 +94,17 @@ export default {
         if (this.clickNum === 1) {
           if (index !== 0) {
             element.classList.add('animate__fadeInUp')
+            setTimeout(() => {
+              element.classList.remove('animate__fadeInUp')
+            }, 1000)
           }
         }
         if (this.clickNum === 2) {
           if (index !== 3) {
             element.classList.add('animate__fadeInDown')
+            setTimeout(() => {
+              element.classList.remove('animate__fadeInDown')
+            }, 1000)
           }
         }
       }
@@ -110,6 +117,7 @@ export default {
       for (let index = 0; index < refArr.length; index++) {
         const element = refArr[index]
         if (index === 0) {
+          // element.className = 'music-control animate__animated'
           setTimeout(() => {
             element.style = 'transform: translateY(150%);'
           })

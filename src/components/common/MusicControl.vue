@@ -1,5 +1,5 @@
 <template>
-  <div class="music-control" @click="$emit('click', isPlay)">
+  <div class="music-control" @click.stop="$emit('click', isPlay)">
     <div class="music__main">
       <div :class="['music__cover', isPlay ? 'active' : '']" @click="play">
         <img src="~assets/img/music.jpg" />
