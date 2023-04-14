@@ -42,7 +42,8 @@ export default {
       { src: require('@/assets/music/嘘つき-早稻叽.mp3'), name: '嘘つき-早稻叽' }, //嘘つき-早稻叽
       { src: require('@/assets/music/世界は恋に落ちている-pika.mp3'), name: '世界は恋に落ちている-pika' }, //世界は恋に落ちている-pika
       { src: require('@/assets/music/小さいな恋のうた-椎白真昼.mp3'), name: '小さいな恋のうた-椎白真昼' }, //小小恋歌
-      { src: require('@/assets/music/回る空うさぎ-miku.mp3'), name: '回る空うさぎ-miku' } //月兔回旋于空中
+      { src: require('@/assets/music/回る空うさぎ-miku.mp3'), name: '回る空うさぎ-miku' }, //月兔回旋于空中
+      { src: require('@/assets/music/夏令时记录-ゆめこ.mp3'), name: 'サマータイムレコード-ゆめこ' } //サマータイムレコード
       //'http://music.163.com/song/media/outer/url?id=28815677.mp3', //下一站天后
       //'http://music.163.com/song/media/outer/url?id=1350160463.mp3', //勾指起誓
       //image.png'http://music.163.com/song/media/outer/url?id=1840459406.mp3', //崂山水
